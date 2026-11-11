@@ -34,11 +34,11 @@ The icon is the Reticulum project logo; Nomad Network itself publishes no logo.
 
 ## Image and Container Runtime
 
-The image is built by this package's `Dockerfile`, because upstream's published container image is amd64-only. It is `python:3.12-slim` with Nomad Network (and its `rns` and `lxmf` dependencies) installed from PyPI, plus `tmux`, `nano`, and the static `ttyd` release binary (checksum-verified).
+The image is built by this package's `Dockerfile`, because upstream's published container image is amd64-only. It is the official slim Python image with Nomad Network (and its `rns` and `lxmf` dependencies) installed from PyPI, plus `tmux`, `nano`, and the static `ttyd` release binary (checksum-verified).
 
 | Item          | Value                                                                                   |
 | ------------- | --------------------------------------------------------------------------------------- |
-| Image source  | Custom `Dockerfile` (pip-installed `nomadnet` on `python:3.12-slim`)                    |
+| Image source  | Custom `Dockerfile` (pip-installed `nomadnet` on slim Python)                           |
 | Architectures | x86_64, aarch64                                                                         |
 | Entrypoint    | None used; each daemon sets its own command                                             |
 | Environment   | `HOME=/data`, so `~/.reticulum`, `~/.nomadnetwork` and `~/Downloads` land on the volume |
