@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="icon.png" alt="Nomad Network Logo" width="21%">
+  <img src=".github/social-preview.png" alt="Nomad Network on StartOS" width="100%">
 </p>
 
 # Nomad Network on StartOS
