@@ -1,5 +1,5 @@
 import { T } from '@start9labs/start-sdk'
-import { manifest as nextexplorerManifest } from 'nextexplorer-startos/startos/manifest'
+import type { manifest as nextexplorerManifest } from 'nextexplorer-startos/startos/manifest'
 import { sdk } from './sdk'
 
 // ttyd serves the browser terminal here; the proxy gates it with basic auth.
@@ -187,17 +187,22 @@ export function deleteIniKeys(
   return kept.join('\n')
 }
 
-// ConfigObj reads an unquoted value up to a comma or `#`; quote anything that
-// carries one, and refuse the quote characters themselves (enforced by the
-// action's input pattern).
+// ConfigObj reads an unquoted value up to a comma or `#` and rejects one opening
+// with `'`; double-quote those, and refuse `"` itself (the action's input pattern).
 export function iniString(value: string): string {
-  return /[,#]|^\s|\s$/.test(value) ? `"${value}"` : value
+  return /[,#']|^\s|\s$/.test(value) ? `"${value}"` : value
 }
 
-export const ttydCommand: T.CommandType = [
+// ttyd also demands this in each socket's first message, readable only same-origin.
+export const ttydCommand = (password: string): T.CommandType => [
   'ttyd',
   '--port',
   String(ttydPort),
+  '--credential',
+  `${uiUsername}:${password}`,
+  // Errors and warnings only: ttyd logs the credential at notice level.
+  '--debug',
+  '3',
   '--writable',
   '--ping-interval',
   '30',

@@ -13,7 +13,6 @@ export const setInterfaces = sdk.setupInterfaces(async ({ effects }) => {
     ttydPort,
     {
       protocol: 'http',
-      preferredExternalPort: ttydPort,
       // Unset only until the critical set-password task is done, and the service
       // cannot start before then.
       proxy: {

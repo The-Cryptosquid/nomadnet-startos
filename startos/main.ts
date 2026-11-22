@@ -14,6 +14,15 @@ import {
 export const main = sdk.setupMain(async ({ effects }) => {
   console.info(i18n('Starting Nomad Network!'))
 
+  // Without it neither the proxy gate nor ttyd asks for a login.
+  const password = await storeJson.read((s) => s?.uiPassword).const(effects)
+  if (!password)
+    throw new Error(
+      i18n(
+        'The web terminal has no login of its own. Set a password before starting Nomad Network.',
+      ),
+    )
+
   // ==================================
   // NextExplorer website folders
   // ==================================
@@ -88,7 +97,7 @@ export const main = sdk.setupMain(async ({ effects }) => {
     })
     .addDaemon('terminal', {
       subcontainer: sub,
-      exec: { command: ttydCommand },
+      exec: { command: ttydCommand(password) },
       ready: {
         display: i18n('Web Terminal'),
         fn: () =>

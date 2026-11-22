@@ -61,7 +61,7 @@ Edits to a page show up the next time someone opens it. New or deleted pages sho
 - **Node Information** — see and copy your display name, your LXMF address (for people to message you), and your node's name, address, and propagation node address.
 - **Node Settings** — set your node's name, turn hosting or the propagation node on or off, and cap how much disk space stored messages may use. Saving restarts Nomad Network if it is running, which briefly disconnects the Web Terminal.
 - **Website Source** — serve your pages and files from folders in NextExplorer, or switch back to the built-in folders.
-- **Reset Web Terminal Password** — generate a new password. The old one stops working right away.
+- **Reset Web Terminal Password** — generate a new password. The old one stops working right away, and Nomad Network restarts if it is running, which briefly disconnects the Web Terminal.
 - **Reset Network Configuration** — use this if an interface change stops Nomad Network from starting. It puts the default network settings back, removes every interface you added, and restarts. Your identity, conversations, pages, and files are kept.
 
 ## Limitations

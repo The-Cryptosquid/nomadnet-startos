@@ -26,8 +26,10 @@ const inputSpec = InputSpec.of({
     maxLength: 64,
     patterns: [
       {
-        regex: '[^"\'\\n\\r]*',
-        description: i18n('Quotation marks and line breaks are not allowed'),
+        regex: '[^"\\n\\r]*',
+        description: i18n(
+          'Double quotation marks and line breaks are not allowed',
+        ),
       },
     ],
   }),
@@ -72,11 +74,11 @@ export const nodeSettings = sdk.Action.withInput(
     const config = (await nomadnetConfig.read().once()) ?? ''
     const name = getIniValue(config, 'node', 'node_name')
     return {
-      enableNode: isYes(getIniValue(config, 'node', 'enable_node'), true),
-      nodeName: name && name !== 'None' ? name : null,
+      enableNode: isYes(getIniValue(config, 'node', 'enable_node'), false),
+      nodeName: name && name.toLowerCase() !== 'none' ? name : null,
       propagation: !isYes(
         getIniValue(config, 'node', 'disable_propagation'),
-        false,
+        true,
       ),
       storageLimit: Math.round(
         Number(getIniValue(config, 'node', 'message_storage_limit') ?? 2000) ||

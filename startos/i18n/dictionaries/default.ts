@@ -36,7 +36,7 @@ const dict = {
   'Announce this server as a Nomad Network node that serves the pages and files you publish. Turn off to run only the messaging client.': 23,
   'Node Name': 24,
   'The name other peers see for your node. Leave empty to use your display name followed by "\'s Node".': 25,
-  'Quotation marks and line breaks are not allowed': 26,
+  'Double quotation marks and line breaks are not allowed': 26,
   'Propagation Node': 27,
   'Store encrypted messages for peers while they are offline, including your own phone or laptop. Requires Host a Node.': 28,
   'Propagation Storage Limit': 29,

@@ -5,7 +5,7 @@ export const manifest = setupManifest({
   id: 'nomadnet',
   title: 'Nomad Network',
   license: 'GPL-3.0',
-  packageRepo: 'https://github.com/The-Cryptosquid/nomadnet-startos',
+  packageRepo: 'https://github.com/Start9-Community/nomadnet-startos',
   upstreamRepo: 'https://github.com/markqvist/NomadNet',
   marketingUrl: 'https://reticulum.network/',
   donationUrl: 'https://liberapay.com/Reticulum/',
